@@ -16,13 +16,16 @@
 
 #include <stdlib.h>
 
+#include <stdlib.h>
+
 int	*twoSum(int *nums, int numsSize, int target, int *returnSize)
 {
 	int	i;
 	int	j;
-	int	result;
+	int	*result;
 
 	i = 0;
+    *returnSize = 2;
 	result = 0;
 	while (i + 1 < numsSize)
 	{
@@ -31,10 +34,10 @@ int	*twoSum(int *nums, int numsSize, int target, int *returnSize)
 		{
 			if (nums[j] + nums[i] == target)
 			{
-				returnSize = (int *)malloc(sizeof(int) * 2);
-				returnSize[0] = nums[i];
-				returnSize[1] = nums[j];
-				return (returnSize);
+				result = (int *)malloc(sizeof(int) * *returnSize);
+				result[0] = i;
+				result[1] = j;
+				return (result);
 			}
 			j++;
 		}
@@ -42,3 +45,4 @@ int	*twoSum(int *nums, int numsSize, int target, int *returnSize)
 	}
 	return (NULL);
 }
+
